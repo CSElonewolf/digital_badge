@@ -6,26 +6,29 @@ Home | Digital Badges
 {% include "includes/messages.html" %}
 <div class="container mt-5">
 <div class="row">
-	{% if badges is not None %}
-	{% for badge in badges %}
-		<div class="col-lg-4">
-			<div class="card" >
-			<center>
-				<img class="card-img-top" src="{{badge.badge_image.url}}" style="max-width:150px;max-height:200px" alt="Card image cap">
-			</center>
-			<div class="card-body">
-				<h5 class="card-title">{{badge.badge_name}}</h5>
-				<p class="card-text">{{badge.badge_description}}</p>
-				<p class="card-text">{{badge.eligible_students}}</p>
-				<a href="#" class="btn btn-primary">Edit Badge</a>
+	{% if count > 0 %}
+		{% for badge in badges %}
+			<div class="col-lg-4">
+				<div class="card" >
+				<center>
+					<img class="card-img-top" src="{{badge.badge_image.url}}" style="max-width:150px;max-height:200px" alt="Card image cap">
+				</center>
+				<div class="card-body">
+					<h5 class="card-title">{{badge.badge_name}}</h5>
+					<p class="card-text">{{badge.badge_description}}</p>
+					<p class="card-text">{{badge.eligible_students}}</p>
+					<a href="#" class="btn btn-primary">Edit Badge</a>
+				</div>
+				</div>
 			</div>
-			</div>
-		</div>
-	{% endfor %}
-
+		{% endfor %}
+</div>
 	{% else %}
+		<center>
+		<h2>No Badges</h2>
+		<h4><a href="{% url 'create-badge' %}">Create Badge</a></h4>
+		</center>
 	{% endif %}
 
-</div>
 </div>
 {% endblock content %}
