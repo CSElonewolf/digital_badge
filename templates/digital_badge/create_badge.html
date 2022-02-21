@@ -12,19 +12,19 @@ Create Badge
 {% csrf_token %}
   <div class="form-group">
     <label >Badge Name</label>
-    <input type="text" class="form-control"   placeholder="Enter Badge Name" name="badge-name" required>
+   {{form.badge_name}}
   </div>
   <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Add Description" name="badge-desc" required></textarea>
+    <label for="exampleFormControlTextarea1">Badge Description</label>
+    {{form.badge_description}}
   </div>
   <div class="form-group">
     <label for="exampleFormControlFile1">Upload Badge</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="badge-img" required>
+    {{form.badge_image}}
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea2">Eligible Students</label>
-    <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" name="eligible-stud" required></textarea>
+    {{form.eligible_students}}
   </div>
   <button type="submit" class="btn btn-primary">Save</button>
 </form>
