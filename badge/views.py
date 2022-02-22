@@ -71,10 +71,18 @@ class VerifyBadge(APIView):
 			badge =  Badge.objects.filter(name=name).filter(email__contains=email)
 			serializer = BadgeSerializer(badge,many=True)
 			if badge.count() == 0:
-				return Response({"message":"You are eligible for the badge"},status = status.HTTP_403_FORBIDDEN)
+				return Response({"message":"You are not eligible for the badge"},status = status.HTTP_403_FORBIDDEN)
 			else:
-				return Response(serializer.data,status = status.HTTP_200_OK)
-		except:
+				print("enterd")
+				emails = Badge.objects.get(name=name).email.split(',')
+				print(emails)
+				print("exittt")
+				for email_value in emails:
+					if email_value.strip() == email:
+						return Response(serializer.data,status = status.HTTP_200_OK)
+				else:
+					return Response({"message":"You are not eligible for the badge"},status = status.HTTP_403_FORBIDDEN)
 
+		except:
 			return Response({"message":"Email/Name missing"},status = status.HTTP_403_FORBIDDEN)
 
