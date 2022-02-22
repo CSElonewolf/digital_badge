@@ -5,30 +5,34 @@ Home | Digital Badges
 {% block content %}
 {% include "includes/messages.html" %}
 <div class="container mt-5">
-<div class="row">
-	{% if count > 0 %}
-		{% for badge in badges %}
-			<div class="col-lg-4">
-				<div class="card" >
-				<center>
-					<img class="card-img-top" src="{{badge.badge_image.url}}" style="max-width:150px;max-height:200px" alt="Card image cap">
-				</center>
-				<div class="card-body">
-					<h5 class="card-title">{{badge.badge_name}}</h5>
-					<p class="card-text">{{badge.badge_description}}</p>
-					<p class="card-text">{{badge.eligible_students}}</p>
-					<a href="#" class="btn btn-primary">Edit Badge</a>
-				</div>
-				</div>
-			</div>
-		{% endfor %}
-</div>
-	{% else %}
-		<center>
-		<h2>No Badges</h2>
-		<h4><a href="{% url 'create-badge' %}">Create Badge</a></h4>
-		</center>
-	{% endif %}
+	<div class="row justify-content-md-center">
+		{% if count > 0 %}
+			{% for badge in badges %}
+				<div class="col-lg-4">
+					<div class="card" >
+						<center>
+						{% if badge.badge_image %}
+							<img class="card-img-top" src="{{badge.badge_image.url}}" style="max-width:150px;max-height:200px" alt="Card image cap">
 
+						{% else %}
+						{% endif %}
+						</center>
+						<div class="card-body">
+							<h5 class="card-title">{{badge.name}}</h5>
+							<p class="card-text">{{badge.badge_description}}</p>
+							<p class="card-text">{{badge.email}}</p>
+							<a href="{% url 'edit-badge' badge.id  %}" class="btn btn-primary">Edit Badge</a>
+							<a href="{% url 'delete-badge' badge.id  %}" class="btn btn-danger">Delete Badge</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+	</div>
+		{% else %}
+		<div class="col-md-auto">
+			<h2 class="text-center" >No Badges</h2>
+			<h4 class="text-center" ><a href="{% url 'create-badge' %}">Create Badge</a></h4>
+		</div>
+		{% endif %}
 </div>
 {% endblock content %}

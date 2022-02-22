@@ -16,11 +16,6 @@
       {% endif %}">
         <a class="nav-link" href="{% url 'create-badge' %}">Create Badge</a>
       </li>
-      <li class="nav-item {% if 'verify-form' in request.path %}
-      active
-      {% endif %}">
-        <a class="nav-link" href="{% url 'verify-form' %}">Verify Badge</a>
-      </li>
     </ul>
   </div>
 </nav>
