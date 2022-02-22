@@ -61,7 +61,11 @@ Run the project on localhost port 8000(default)
 ```bash
   python manage.py runserver 
 ```
+## Where to find .png badge images 
 
+```bash
+  assests/
+```
 
 ## Screenshots
 
@@ -98,7 +102,7 @@ Run the project on localhost port 8000(default)
   GET http:127.0.0.1/badge/verify?name=<badge_name>&email=<email_id>
 ```
 
-## Demo
+<!-- ## Demo
 
-Insert gif or link to demo
+Insert gif or link to demo -->
 
