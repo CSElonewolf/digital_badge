@@ -37,37 +37,6 @@ def create_badge(request):
 		}
 		return render(request, 'badge/create_badge.html',context)
 
-# def verify_form(request):
-# 	"""Display the verify form """
-# 	return render(request,'badge/verfiy_form.html')
-
-# def verify(request):
-# 	"""Check if the user is eligible for a batch or not"""
-# 	name = None
-# 	email = None
-# 	if 'name' in request.GET:
-# 		name = request.GET['name']
-# 	if 'email' in request.GET:
-# 		email = request.GET['email'].lower()
-
-# 	if name is not None and email is not None:
-# 		try:
-# 			# check if the badge exists
-# 			badge = get_object_or_404(Badge,name=name.capitalize())
-# 			emails = badge.email.split(',')
-# 			# check if the email provided is eligible for the badge or not
-# 			for email_value in emails:
-# 				if email_value.find(email) != -1 and len(email_value) == len(email):
-
-# 					response = JsonResponse({'status_code':200,'message':"student verified",'badge':badge.badge_image.url})
-# 					return response
-# 			# if email is associted with the badge doesnot exists 		#
-# 			response = JsonResponse({'status_code':403})
-# 			return response
-# 		except:
-# 			# if the badge doesnotexists
-# 			response = JsonResponse({'status_code':403})
-# 			return response
 
 def edit_badge(request,pk):
 	badge = get_object_or_404(Badge,pk=pk)
